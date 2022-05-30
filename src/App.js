@@ -2,11 +2,14 @@ import "primereact/resources/themes/lara-light-indigo/theme.css"; // primeng the
 import "primereact/resources/primereact.min.css"; // core css
 import "primeicons/primeicons.css"; // icons
 import Login from "./pages/Login";
+import { LoginProvider } from "./context/LoginContex";
 
 function App() {
   return (
     <div>
-      <Login />
+      <LoginProvider>
+        <Login />
+      </LoginProvider>
     </div>
   );
 }

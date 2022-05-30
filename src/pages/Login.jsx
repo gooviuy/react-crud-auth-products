@@ -6,10 +6,12 @@ import { Card } from "primereact/card";
 import { InputText } from "primereact/inputtext";
 /* import { useNavigate } from "react-router-dom"; */
 import { Toast } from "primereact/toast";
+import { useLogin } from "../context/LoginContex";
 
 const Login = () => {
+  const { login } = useLogin();
   const [form, setForm] = useState({
-    email: "superadmin@gmail.com",
+    email: "superadmin@xxx.com",
     password: "123Pa$$word!",
   });
 
@@ -36,6 +38,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await login(form.email, form.password);
+    } catch (err) {
+      console.log(err);
+    }
+    console.log("logged in");
   };
 
   useEffect(() => {}, []);
